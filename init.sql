@@ -41,4 +41,5 @@ SHOW INDEX FROM `user_clearances`
 ALTER TABLE `user_clearances` ADD UNIQUE INDEX `user_clearances_user_id_clearance_name` (`user_id`, `clearance_name`)
 CREATE TABLE IF NOT EXISTS `history_clearances` (`type` VARCHAR(512) NOT NULL , `history_id` BIGINT NOT NULL , `clearance_name` VARCHAR(1024) NOT NULL , `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, UNIQUE `history_clearances_type_history_id_clearance_name_unique` (`type`, `history_id`, `clearance_name`), PRIMARY KEY (`type`, `history_id`, `clearance_name`), FOREIGN KEY (`history_id`) REFERENCES `histories` (`id`), FOREIGN KEY (`clearance_name`) REFERENCES `clearances` (`name`)) ENGINE=InnoDB;
 SHOW INDEX FROM `history_clearances`
-ALTER TABLE `history_clearances` ADD UNIQUE INDEX `history_clearances_type_history_id_clearance_name` (`type`, `history_id`, `clearance_name`)ALTER TABLE `history_clearances` ADD INDEX `history_clearances_history_id` (`history_id`)
+ALTER TABLE `history_clearances` ADD UNIQUE INDEX `history_clearances_type_history_id_clearance_name` (`type`, `history_id`, `clearance_name`)
+ALTER TABLE `history_clearances` ADD INDEX `history_clearances_history_id` (`history_id`)
